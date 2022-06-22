@@ -1,29 +1,101 @@
-import Head from 'next/head';
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useState } from 'react'
+import { DataContext } from '../../store/GlobalState'
+import { postData } from '../../utils/fetchData'
+import { val } from '../../utils/validate'
 const signup = () => {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [c_password, setC_password] = useState('')
+  const router = useRouter()
+  const [state, dispatch] = useContext(DataContext)
+  const { auth } = state
+  const handleChangeInput = async (e) => {
+    e.preventDefault()
+    const userData = {
+      name: name,
+      email: email,
+      password: password,
+      c_password: c_password,
+    }
+    const errorMessage = val(name, email, password, c_password)
+    if (errorMessage) {
+      return dispatch({ type: 'NOTIFY', payload: { error: errorMessage } })
+    } else {
+      dispatch({ type: 'NOTIFY', payload: { loading: true } })
+      const res = await postData('auth/authenticate', userData)
+      if (res.success === true) {
+        router.push('/')
+        dispatch({ type: 'NOTIFY', payload: { loading: false } })
+      } else {
+        dispatch({ type: 'NOTIFY', payload: { loading: false } })
+      }
+    }
+  }
+  useEffect(() => {
+    if (Object.keys(auth).length !== 0) router.push('/')
+  }, [auth])
   return (
     <div>
       <Head>
-       <title>Sign Up Page</title>
+        <title>Sign Up Page</title>
       </Head>
-      <form className='mx-auto my-4' style={{maxWidth:'500px'}}>
+      <form
+        onSubmit={handleChangeInput}
+        className="mx-auto my-4"
+        style={{ maxWidth: '500px' }}
+      >
+        <div className="form-group">
+          <label htmlFor="exampleInputEmail1">Name</label>
+          <input
+            onChange={(e) => setName(e.target.value)}
+            type="text"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter Name"
+          />
+        </div>
         <div className="form-group">
           <label htmlFor="exampleInputEmail1">Email address</label>
-          <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"/>
-        
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            type="email"
+            className="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            placeholder="Enter email"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="exampleInputPassword1">Password</label>
-          <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+          <input
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
         </div>
         <div className="form-group">
-        <label htmlFor="exampleInputPassword1">Confirm Password</label>
-        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
+          <label htmlFor="exampleInputPassword1">Confirm Password</label>
+          <input
+            onChange={(e) => setC_password(e.target.value)}
+            type="password"
+            className="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
         </div>
-       
-        <button type="submit" className="btn btn-primary">Submit</button>
+
+        <button type="submit" className="btn btn-primary border-0 px-4 bg-red-400">
+          Register
+        </button>
       </form>
     </div>
-  );
+  )
 }
 
-export default signup;
+export default signup
