@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../store/GlobalState'
 import { postData } from '../../utils/fetchData'
 import { val } from '../../utils/validate'
-const signup = () => {
+const Signup = () => {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -98,4 +98,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default Signup

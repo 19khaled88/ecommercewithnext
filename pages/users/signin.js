@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react'
 import { DataContext } from '../../store/GlobalState'
 import { login } from '../../utils/fetchData'
 import { loginValidate } from '../../utils/validate'
-const signin = () => {
+const Signin = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [state, dispatch] = useContext(DataContext)
@@ -85,4 +85,4 @@ const signin = () => {
   )
 }
 
-export default signin
+export default Signin
