@@ -19,7 +19,7 @@ const Signin = () => {
       dispatch({ type: 'NOTIFY', payload: { error: errorMessage } })
     } else {
       dispatch({ type: 'NOTIFY', payload: { loading: true } })
-      const res = await login('/auth/loginUrl', userData)
+      const res = await login('auth/loginUrl', userData)
       if (res.success === true) {
         router.push('/')
         dispatch({ type: 'NOTIFY', payload: { msg: res.msg, loading: false } })
