@@ -1,11 +1,10 @@
 import bcrypt from 'bcrypt'
+import { useRouter } from 'next/router'
 import User from '../../../models/userModels'
 import connectDB from '../../../utils/connectDB'
-import val from '../../../utils/validate'
-import { useRouter } from 'next/router'
 connectDB()
 
-export default async (req, res) => {
+const Authenticate = async (req, res) => {
   const { method } = req
   const router = useRouter()
 
@@ -51,3 +50,5 @@ export default async (req, res) => {
       break
   }
 }
+
+export default Authenticate

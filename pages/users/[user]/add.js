@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { useRouter } from "next/router";
 import { useRef, useState } from 'react';
 import { UserPageLayout } from "./";
@@ -124,7 +125,7 @@ const AddPage = () => {
               <input onChange={imageHandle} type="file" placeholder="Checkced"/>
             </div>
             {
-              createObjectURL ? <img className="w-64 h-24" src={createObjectURL} />:''
+              createObjectURL ? <Image width={500} height={500} src={createObjectURL} alt="" />:''
             }
             
         </div>

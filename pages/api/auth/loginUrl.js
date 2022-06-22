@@ -7,7 +7,8 @@ import {
 
 connectDB()
 
-export default async (req, res) => {
+const Loginurl = async (req, res) => {
+  // connectDB()
   const { method } = req
  
   switch (method) {
@@ -59,3 +60,5 @@ export default async (req, res) => {
       break
   }
 }
+
+export default Loginurl

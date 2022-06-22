@@ -5,7 +5,7 @@ import {
   accessTokenCreate
 } from '../../../utils/tokenGenerate'
 connectDB()
-export default async (req, res) => {
+const Token = async (req, res) => {
   try {
     const re_token = req.cookies.refreshToken
     if (!re_token) res.status(400).json({ err: 'Please login' })
@@ -30,3 +30,5 @@ export default async (req, res) => {
     return res.status(500).json({ err: error.message })
   }
 }
+
+export default Token
