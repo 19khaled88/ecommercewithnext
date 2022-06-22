@@ -3,7 +3,7 @@ import connectDB from '../../../utils/connectDB'
 
 connectDB()
 
-export default async (req, res) => {
+const ProductHandle = async (req, res) => {
   switch (req.method) {
     case 'GET':
       //   await getProducts(req, res)
@@ -25,6 +25,7 @@ export default async (req, res) => {
       break
   }
 }
+export default ProductHandle
 
 // const getProducts = async (req, res) => {
 //   try {

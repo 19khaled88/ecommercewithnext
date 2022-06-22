@@ -1,9 +1,9 @@
 import Cookie from 'js-cookie'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
 import { DataContext } from '../store/GlobalState'
-
 const Navbar = () => {
   const router = useRouter()
   const [state, dispatch] = useContext(DataContext)
@@ -149,7 +149,7 @@ const Navbar = () => {
                         className={'dropdown-item' + isActive('/user')}
                         style={{ width: 160 }}
                       >
-                        <img
+                        <Image
                           style={{
                             width: '20px',
                             height: '20px',
