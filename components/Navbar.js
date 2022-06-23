@@ -1,14 +1,14 @@
 import Cookie from 'js-cookie'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
+import { Image } from 'semantic-ui-react'
 import { DataContext } from '../store/GlobalState'
 const Navbar = () => {
   const router = useRouter()
   const [state, dispatch] = useContext(DataContext)
   const { auth } = state
- 
+  
 
   if (typeof window !== 'undefined') {
     // Perform localStorage action
@@ -49,7 +49,12 @@ const Navbar = () => {
       router.push('/')
     }
   }
-  // console.log(auth)
+  let image;
+  if(auth){
+   const change =  Object.entries(auth)
+   image = change.map(item=> console.log(item[1].avatar))
+  }
+  console.log(image)
   return (
     <div className="">
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
@@ -122,10 +127,10 @@ const Navbar = () => {
               </li>
 
               <li className="nav-item dropdown">
-                <a
+                <button
                   style={{ width: 80 }}
                   className="nav-link d-flex flex-row align-items-center dropdown-toggle"
-                  href="#"
+                  href=""
                   id="navbarDropdown"
                   role="button"
                   data-toggle="dropdown"
@@ -141,7 +146,7 @@ const Navbar = () => {
                     <path d="M319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM183.9 216c0-5.449 .9824-10.63 1.609-15.91C174.6 194.1 162.6 192 149.9 192H88.08C39.44 192 0 233.8 0 285.3C0 295.6 7.887 304 17.62 304h199.5C196.7 280.2 183.9 249.7 183.9 216zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM551.9 192h-61.84c-12.8 0-24.88 3.037-35.86 8.24C454.8 205.5 455.8 210.6 455.8 216c0 33.71-12.78 64.21-33.16 88h199.7C632.1 304 640 295.6 640 285.3C640 233.8 600.6 192 551.9 192z" />
                   </svg>
                   User
-                </a>
+                </button>
                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                   {Object.keys(auth).length > 0 && (
                     <Link href="/users">
@@ -151,19 +156,17 @@ const Navbar = () => {
                         style={{ width: 160 }}
                       >
                         <Image
-                          
-                          width={50}
-                          height={50}
-                          style={{
-                            // width: '20px',
-                            // height: '20px',
-                            borderRadius: '50%',
-                            transform: 'translateY(-3px)',
-                            marginRight: '3px',
-                            display:'inline'
-                          }}
-                          src={auth.user.avatar}
-                          alt={auth.user.name}
+                        className='w-5 h-5'
+                        style={{
+                          borderRadius: '50%',
+                          transform: 'translateY(-3px)',
+                          marginRight: '3px',
+                          display:'inline'
+                        }}
+                        src={auth.user.avatar}
+                        // width={500}
+                        // height={500}
+                        alt={auth.user.name}
                         />
                         User/Admin
                       </a>
