@@ -1,5 +1,5 @@
 import Cookie from 'js-cookie'
-// import Image from 'next/image'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext } from 'react'
@@ -150,13 +150,13 @@ const Navbar = () => {
                         className={'dropdown-item' + isActive('/user')}
                         style={{ width: 160 }}
                       >
-                        <img
+                        <Image
                           
-                          // width={500}
-                          // height={500}
+                          width={500}
+                          height={500}
                           style={{
-                            width: '20px',
-                            height: '20px',
+                            // width: '20px',
+                            // height: '20px',
                             borderRadius: '50%',
                             transform: 'translateY(-3px)',
                             marginRight: '3px',
