@@ -3,6 +3,14 @@
 // const withImages = require('next-images')
 const nextConfig = {
   reactStrictMode: true,
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'https://ecommercewithnext.vercel.app/:path*',
+      },
+    ]
+  },
   env:{
     'BASE_URL':'https://ecommercewithnext.vercel.app',
     // khaled:VNHAybzMnVDF6NMq
