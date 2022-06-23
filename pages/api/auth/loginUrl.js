@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt'
+import Cors from 'cors'
 import User from '../../../models/userModels'
 import connectDB from '../../../utils/connectDB'
 import {
@@ -6,9 +7,27 @@ import {
 } from '../../../utils/tokenGenerate'
 
 connectDB()
+const cors = Cors({
+  methods:['GET','HEAD','POST']
+})
+
+function runMiddleware(req, res, fn) {
+  return new Promise((resolve, reject) => {
+    fn(req, res, (result) => {
+      if (result instanceof Error) {
+        return reject(result)
+      }
+
+      return resolve(result)
+    })
+  })
+}
+
 
 const Loginurl = async (req, res) => {
   // connectDB()
+
+  await runMiddleware(req, res,cors)
   const { method } = req
  
   switch (method) {
