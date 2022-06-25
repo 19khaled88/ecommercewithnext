@@ -8,7 +8,7 @@ import {
 
 connectDB()
 const cors = Cors({
-  methods:['GET','HEAD','POST']
+  methods:['GET','HEAD','POST','PUT']
 })
 
 function runMiddleware(req, res, fn) {

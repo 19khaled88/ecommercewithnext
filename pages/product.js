@@ -9,13 +9,15 @@ const Product = (props) => {
       <Head>
         <title>Home page</title>
       </Head>
-      {products.length === 0 ? (
-        <h2>No Products</h2>
-      ) : (
-        products.map((product) => (
-          <ProductItem key={product._id} product={product} />
-        ))
-      )}
+      <div className='grid grid-cols-5 gap-6 pt-4'>
+        {products.length === 0 ? (
+          <h2>No Products</h2>
+        ) : (
+          products.map((product) => (
+            <ProductItem key={product._id} product={product} />
+          ))
+        )}
+      </div>
     </div>
   )
 }

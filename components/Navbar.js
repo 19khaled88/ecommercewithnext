@@ -49,12 +49,7 @@ const Navbar = () => {
       router.push('/')
     }
   }
-  let image;
-  if(auth){
-   const change =  Object.entries(auth)
-   image = change.map(item=> console.log(item[1].avatar))
-  }
-  console.log(image)
+  
   return (
     <div className="">
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">

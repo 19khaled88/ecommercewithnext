@@ -2,10 +2,10 @@
 // const withPlugins = require('next-compose-plugins')
 // const withImages = require('next-images')
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   env:{
-    'BASE_URL':'https://ecommercewithnext.vercel.app',
-    // 'BASE_URL':'http://localhost:3000',
+    // 'BASE_URL':'https://ecommercewithnext.vercel.app',
+    'BASE_URL':'http://localhost:3000',
     // khaled:VNHAybzMnVDF6NMq
     'MONGODB_URL':"mongodb+srv://khaled:VNHAybzMnVDF6NMq@cluster0.ka5da.mongodb.net/ecommercenext",
     // mongodb+srv://khaled:VNHAybzMnVDF6NMq@cluster0.ka5da.mongodb.net/ecommercenext?retryWrites=true&w=majority
