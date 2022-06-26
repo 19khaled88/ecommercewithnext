@@ -51,7 +51,7 @@ const Navbar = () => {
   }
   
   return (
-    <div className="">
+    <div className="sticky top-0 z-50">
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
         <div>
           <Link href="/">

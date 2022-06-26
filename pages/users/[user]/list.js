@@ -108,7 +108,7 @@ const ListPage = ({products}) => {
       <Table.Footer fullWidth>
           <Table.Row>
           <Table.HeaderCell />
-          <Table.HeaderCell colSpan='8'>
+          <Table.HeaderCell colSpan='9'>
               <Button
               floated='right'
               icon

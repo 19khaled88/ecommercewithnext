@@ -11,7 +11,7 @@ const Home = (props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <main style={{ height: '460px' }}>
+        <main>
           <h1
             style={{ fontSize: 30, color: 'blueviolet', textAlign: 'center' }}
           >

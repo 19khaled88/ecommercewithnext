@@ -5,7 +5,7 @@ const ProductItem = ({ product }) => {
   
   return (
     <div className="card" style={{ width: '18rem' }}>
-      <p className="mt-1 rounded-md text-2xl border w-2/3 mx-auto py-0 h-8 flex items-center justify-center">{product.category}</p>
+      <p className="mt-1 rounded-md text-2xl border  mx-auto py-0 px-2 h-8 flex items-center justify-center">{product.category}</p>
       <Image 
         className="card-img-top h-56 py-2 px-2"
         src={product.images} 
