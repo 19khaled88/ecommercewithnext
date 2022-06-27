@@ -16,7 +16,7 @@ const ListPage = ({products}) => {
   const[title, setTitle] = useState('')
   const[description, setDescription] = useState('')
   const[price, setPrice] = useState('')
-  const[stock, setStock] = useState('')
+  const[inStock, setStock] = useState('')
   
  
   const Delete=(data)=>{
@@ -32,7 +32,7 @@ const ListPage = ({products}) => {
 
   const editFormSubmit=async(pId)=>{
    const id = [['id', pId]]
-   const value ={category,title,description,price,stock}
+   const value ={category,title,description,price,inStock}
    
    const changedValue =[]
    var result = Object.entries(value)
@@ -48,7 +48,7 @@ const ListPage = ({products}) => {
     const res = await putData('products', [changedValue, id])
     // const res = await putData('products', Object.fromEntries(changedValue.concat(id)))
     // res.success === true ? e.target.reset():''
-    console.log(res)
+    // console.log(res)
   }
     // setShowEditModal(false)
   }

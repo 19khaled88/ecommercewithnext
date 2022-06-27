@@ -43,13 +43,15 @@ const Signin = () => {
     }
   }
   useEffect(() => {
-    if (Object.keys(auth).length !== 0) router.push('/')
+    if (Object.keys(auth).length !== 0) router.push('/users')
   }, [auth,router])
   return (
     <div>
       <Head>
         <title>Sign In Page</title>
       </Head>
+      <section className='pt-24'>
+      <p className='text-center text-3xl font-bold'>Login Page</p>
       <form
         onSubmit={loginHandler}
         className="mx-auto my-4"
@@ -81,6 +83,7 @@ const Signin = () => {
           Login
         </button>
       </form>
+      </section>
     </div>
   )
 }

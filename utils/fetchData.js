@@ -10,6 +10,17 @@ export const getData = async (url, token) => {
   return data
 }
 
+export const getSingleData = async (url, token) => {
+  const res = await fetch(`${baseUrl}/api/${url}`, {
+    method: 'GET',
+    headers: {
+      Authorization: token,
+    },
+  })
+  const data = await res.json()
+  return data
+}
+
 export const login = async (url, post, token) => {
   const res = await fetch(`${baseUrl}/api/${url}`, {
     method: 'POST',

@@ -22,15 +22,15 @@ const ProductHandle = async (req, res) => {
     case 'POST':
       try {
         const {title, price,description,content,images,category,checked,inStock,sold} = req.body
-        console.log(title)
-        console.log(price)
-        console.log(description)
-        console.log(content)
-        console.log(images)
-        console.log(category)
-        console.log(checked)
-        console.log(inStock)
-        console.log(sold)
+        // console.log(title)
+        // console.log(price)
+        // console.log(description)
+        // console.log(content)
+        // console.log(images)
+        // console.log(category)
+        // console.log(checked)
+        // console.log(inStock)
+        // console.log(sold)
         const product = await Products.create({
           title, price,description,content,images,category,checked,inStock,sold
         })

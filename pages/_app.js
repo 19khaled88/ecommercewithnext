@@ -1,9 +1,12 @@
+import '@fortawesome/fontawesome-svg-core/styles.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import 'semantic-ui-css/semantic.min.css'
 import Layout from '../components/Layout'
 import Navbar from '../components/Navbar'
 import Notify from '../components/Notify'
 import { DataProvider } from '../store/GlobalState'
 import '../styles/globals.css'
+
 function MyApp({ Component, pageProps }) {
   // <Layout>
   //       <Component

@@ -42,6 +42,8 @@ const Signup = () => {
       <Head>
         <title>Sign Up Page</title>
       </Head>
+      <section className='pt-24'>
+      <p className='text-center text-3xl font-bold'>Register Page</p>
       <form
         onSubmit={handleChangeInput}
         className="mx-auto my-4"
@@ -94,6 +96,7 @@ const Signup = () => {
           Register
         </button>
       </form>
+      </section>
     </div>
   )
 }

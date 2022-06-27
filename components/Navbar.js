@@ -7,7 +7,7 @@ import { DataContext } from '../store/GlobalState'
 const Navbar = () => {
   const router = useRouter()
   const [state, dispatch] = useContext(DataContext)
-  const { auth } = state
+  const { auth,cart } = state
   
 
   if (typeof window !== 'undefined') {
@@ -51,9 +51,10 @@ const Navbar = () => {
   }
   
   return (
-    <div className="sticky top-0 z-50">
+    <div className="sticky top-0 z-40">
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
-        <div>
+        <div className='flex flex-row justify-center items-center'>
+          <Image className='w-16 h-16 mr-3' src='shopping-cart-logo - Copy.png' alt='' />
           <Link href="/">
             <a className="navbar-brand">E-commerce Site</a>
           </Link>
@@ -118,7 +119,9 @@ const Navbar = () => {
                     Cart
                   </a>
                 </Link>
-                <span className="absolute right-6 top-1 inline-flex items-center w-4 h-4 justify-center px-2 py-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">9</span>
+                <span className="absolute right-6 top-1 inline-flex items-center w-4 h-4 justify-center px-2 py-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
+                {cart.length}
+                </span>
               </li>
 
               <li className="nav-item dropdown">

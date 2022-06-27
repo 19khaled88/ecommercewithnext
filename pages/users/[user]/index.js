@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { Image } from 'semantic-ui-react';
 import nestLayout from '../../../utils/nestLayout';
 import { UsersPageLayout } from '../../users/index';
 
@@ -48,7 +49,7 @@ const UserPage = () => {
           <div className='rounded-xl w-1/2 h-64 flex items-center py-0'> 
             <div className="rounded overflow-hidden shadow-lg bg-white w-full">
               <div className='flex justify-center items-center'>
-              <img className="w-40 h-40" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Sunset in the mountains"/>
+              <Image className="w-40 h-40" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Sunset in the mountains"/>
               </div>
               <div className="px-2 py-2 flex flex-col">
                 <div className='flex flex-row justify-between'>

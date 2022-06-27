@@ -2,10 +2,10 @@
 const Toast = ({msg,handlShow,bgColor}) => {
 
   return (
-    <div className={`toast show position-fixed text-light ${bgColor}`}
+    <div className={`toast z-50 mt-10  show position-fixed text-light ${bgColor}`}
       style={{top:'5px', right:'5px', zIndex:9,minWidth:'280px'}}
       role="alert" data-autohide='false' aria-live="assertive" aria-atomic="true">
-      <div className={`toast-header ${bgColor} text-light`}>
+      <div className={`toast-header  ${bgColor} text-light`}>
       {
         msg.title === 'Error' ? 
 

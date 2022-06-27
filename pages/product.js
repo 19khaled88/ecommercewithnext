@@ -26,7 +26,7 @@ export default Product
 
 export async function getServerSideProps() {
   const res = await getData('products')
-  console.log(res)
+  // console.log(res)
   return {
     props: {
       products: res.products,

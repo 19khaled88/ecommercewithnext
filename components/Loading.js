@@ -1,8 +1,13 @@
-
+import { Oval } from 'react-loader-spinner';
 const Loading = () => {
   return (
-    <div>
-      <h2>Loading...</h2>
+    <div className='mx-auto flex justify-center'>
+      <Oval
+          height="100"
+          width="100"
+          color='grey'
+          ariaLabel='loading'
+      />
     </div>
   );
 }
