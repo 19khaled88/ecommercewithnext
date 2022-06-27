@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Image } from 'semantic-ui-react';
 import CartItem from '../components/cart/cartItem';
 import { DataContext } from '../store/GlobalState';
-const cart = () => { 
+const Cart = () => { 
     const [total, setTotal] = useState(0)
     const [state, dispatch] = useContext(DataContext)
     const {cart,auth} = state
@@ -60,4 +60,4 @@ const cart = () => {
     );
 }
 
-export default cart;
+export default Cart;
