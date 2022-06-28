@@ -44,7 +44,12 @@ export const deleteHandler=(data,getId)=>{
     let deletedcart = data.filter(item=> {
             return item._id !== getId
           })
-    return ({type:'ADD_CART', payload:deletedcart})
+    if(deletedcart.length > 0){
+        return ({type:'ADD_CART', payload:deletedcart})
+    }else if(deletedcart.length === 0){
+        localStorage.removeItem('cart_storage_next_js')
+        return ({type:'ADD_CART', payload:deletedcart})
+    }
 }
 
 // export default ACTIONS

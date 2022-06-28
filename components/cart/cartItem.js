@@ -28,17 +28,7 @@ const CartItem = ({item,dispatched,cart}) => {
     }
    }
 
-  //  const removeCartItemHandler=(getId)=>{
-  //   let deletedcart = ls.filter(item=> {
-  //     return item._id !== getId
-  //   })
-  //   localStorage.setItem('cart_storage_next_js',JSON.stringify(deletedcart))
-  //   setDeleted(true)
-  //  }
-
-  
-
-  
+   
   return (
     <tr>
         <td>
