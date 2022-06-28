@@ -9,13 +9,9 @@ export const DataProvider = ({ children }) => {
   const {cart} = state 
   
   useEffect(()=>{
-    
     if(cart.length > 0){
-      
       localStorage.setItem('cart_storage_next_js',JSON.stringify(cart))
     }
-    
-   
   },[cart])
 
   useEffect(()=>{

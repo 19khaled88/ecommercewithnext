@@ -11,7 +11,7 @@ const DetailProduct = (props) => {
 
   // console.log(cart)
   return (
-    <div className='row detail_page'>
+    <div className='row detail_page container mx-auto'>
       <Head>
         <title>Details Product</title>
       </Head>

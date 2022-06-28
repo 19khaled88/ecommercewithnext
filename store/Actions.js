@@ -15,8 +15,36 @@ export const addToCart =(product, cart)=>{
     })
 
     if(!check) return ({type:'NOTIFY', payload:{error:'This product has already been added to cart'}})
-
+    
     return ({type: 'ADD_CART', payload: [...cart, {...product, quantity:1}] })
+}
+
+export const decrease=(data,id)=>{
+    const newData = [...data]
+    newData.forEach(item =>{
+        if(item._id === id){
+            item.quantity -=1
+            item.inStock +=1
+        } 
+    })
+   return ({type:'ADD_CART', payload:newData})
+}
+export const increase=(data,id)=>{
+    const newData = [...data]
+    newData.forEach(item =>{
+        if(item._id === id){
+            item.quantity +=1
+            item.inStock -=1
+        } 
+    })
+   return ({type:'ADD_CART', payload:newData})
+}
+
+export const deleteHandler=(data,getId)=>{
+    let deletedcart = data.filter(item=> {
+            return item._id !== getId
+          })
+    return ({type:'ADD_CART', payload:deletedcart})
 }
 
 // export default ACTIONS

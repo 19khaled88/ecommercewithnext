@@ -85,6 +85,7 @@ const NestedLayout=({children})=>{
     const router = useRouter()
     const {user} = router.query
 
+    
     return (
         <div>
           <header className='pt-2'>
