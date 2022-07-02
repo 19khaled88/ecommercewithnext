@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { postData } from "../../utils/fetchData";
 
 const Checkcout = ({total, address,mobile,state,dispatch}) => {
-    // const {auth} = state
+   
     const cart =state.cart
     const auth =state.auth
+ 
  
     useEffect(()=>{
        paypal.Buttons({
