@@ -91,7 +91,7 @@ const ListPage = ({products}) => {
                         <Checkbox slider />
                     </Table.Cell>
                     <Table.Cell>{item.category}</Table.Cell>
-                    <Table.Cell><div  className="mx-1 my-1"> <img src={item.images} className="w-10 h-7" alt=""/></div> </Table.Cell>
+                    <Table.Cell><div  className="mx-1 my-1"> <Image src={item.images} className="w-10 h-7" alt=""/></div> </Table.Cell>
                     <Table.Cell>{item.title}</Table.Cell>
                     <Table.Cell>{item.description}</Table.Cell>
                     <Table.Cell>{item.content}</Table.Cell>

@@ -39,7 +39,7 @@ class MyDocument extends Document {
             async
             src="https://kit.fontawesome.com/d7fd680996.js"
           ></script>
-          <script src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID_GENERATED}`}></script>
+          <script src={`https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID_GENERATED}`} async ></script>
         </Head>
 
         <body>
