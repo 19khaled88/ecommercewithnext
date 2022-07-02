@@ -4,13 +4,27 @@ import reducers from './Reducer'
 export const DataContext = createContext()
 
 export const DataProvider = ({ children }) => {
-  const initialState = { notify: {}, auth: {},cart:[] }
+  const initialState = { notify: {}, auth: {},cart:[],userList:[] }
   const [state, dispatch] = useReducer(reducers, initialState)
-  const {cart} = state 
+  const {cart,deletedUserId,EditedUserId} = state 
+
+  useEffect(()=>{
+    getData('userList').then(res=>{
+      if(res.err){
+
+      }
+      // console.log(res)
+      dispatch({type:'USER_LIST',payload:{users:res.users},})
+    })
+  },[])
   
   useEffect(()=>{
     if(cart.length > 0){
       localStorage.setItem('cart_storage_next_js',JSON.stringify(cart))
+    }
+    else if( cart === 0 || cart < 0){
+     
+      localStorage.removeItem('cart_storage_next_js')
     }
   },[cart])
 
@@ -35,7 +49,10 @@ export const DataProvider = ({ children }) => {
       })
     } else {
     }
-  }, [])
+  },[])
+
+ 
+
   return (
     <DataContext.Provider value={[state, dispatch]}>
       {children}

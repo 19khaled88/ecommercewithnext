@@ -17,6 +17,11 @@ const reducers=(state,action)=>{
                 ...state,
                 cart:action.payload
             }
+        case ACTIONS.USER_LIST:
+            return{
+                ...state,
+                userList:action.payload
+            }
         default:
             return state;
     }

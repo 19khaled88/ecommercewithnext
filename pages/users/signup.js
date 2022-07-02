@@ -1,3 +1,4 @@
+import Cookies from 'js-cookie'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
@@ -5,13 +6,15 @@ import { DataContext } from '../../store/GlobalState'
 import { postData } from '../../utils/fetchData'
 import { val } from '../../utils/validate'
 const Signup = () => {
+  const router = useRouter()
+  const [state, dispatch] = useContext(DataContext)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [c_password, setC_password] = useState('')
-  const router = useRouter()
-  const [state, dispatch] = useContext(DataContext)
+ 
   const { auth } = state
+ 
   const handleChangeInput = async (e) => {
     e.preventDefault()
     const userData = {
@@ -25,10 +28,25 @@ const Signup = () => {
       return dispatch({ type: 'NOTIFY', payload: { error: errorMessage } })
     } else {
       dispatch({ type: 'NOTIFY', payload: { loading: true } })
-      const res = await postData('auth/authenticate', userData)
+      const res = await postData('auth/signuplogic', userData)
       if (res.success === true) {
-        router.push('/')
+        
+        router.push('/users')
+       
         dispatch({ type: 'NOTIFY', payload: { loading: false } })
+        dispatch({
+          type: 'AUTH',
+          payload: {
+            token: res.accessToken,
+            user: res.user,
+          },
+        })
+        Cookies.set('refreshToken', res.refreshToken, {
+          //path: 'api/auth/accessToken',
+          expires: 7,
+          path: 'api/auth/token',
+        })
+        localStorage.setItem('FirstLogin', true)
       } else {
         dispatch({ type: 'NOTIFY', payload: { loading: false } })
       }

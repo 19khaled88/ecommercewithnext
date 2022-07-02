@@ -34,6 +34,7 @@ export const login = async (url, post, token) => {
 }
 
 export const postData = async (url, post, token) => {
+
   const res = await fetch(`${baseUrl}/api/${url}`, {
     method: 'POST',
     headers: {
@@ -62,15 +63,33 @@ export const putData = async (url, post, token) => {
   return data
 }
 
-export const deleteData = async (url, token) => {
+export const editData = async (url, post, token) => {
+
+  const res = await fetch(`${baseUrl}/api/${url}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
+      Authorization: token,
+    },
+     body: JSON.stringify(post),
+    // body: JSON.stringify({info:Object.fromEntries(post[0]),id:result[1]}),
+  })
+
+  const data = await res.json()
+  return data
+}
+
+export const deleteData = async (url,id, token) => {
   const res = await fetch(`${baseUrl}/api/${url}`, {
     method: 'DELETE',
     headers: {
       'Content-type': 'application/json',
       Authorization: token,
     },
+   body:JSON.stringify({id:id})
   })
 
   const data = await res.json()
   return data
 }
+

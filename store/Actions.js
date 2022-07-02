@@ -1,7 +1,9 @@
+
 export const ACTIONS={
     NOTIFY:'NOTIFY',
     AUTH:'AUTH',
-    ADD_CART:'ADD_CART'
+    ADD_CART:'ADD_CART',
+    USER_LIST:'USER_LIST'
 }
 
 
@@ -51,5 +53,25 @@ export const deleteHandler=(data,getId)=>{
         return ({type:'ADD_CART', payload:deletedcart})
     }
 }
+
+// export const deleteUser=async(getId)=>{
+//     const result = await deleteData('userList',getId)
+//      if(result){
+//         return ({type:'USER_LIST',payload:{users:result}})
+//      }    
+//      return ({type:'USER_LIST',payload:{deleteId:getId}})      
+    
+//                 // console.log(result)
+//     // if(result) return ({type:'USER_LIST',payload:{deleteId:getId, users:result}})
+//     // return ({type:'USER_LIST',payload:{deleteId:getId}})
+     
+//     // return ({type:'USER_LIST',payload:{deleteId:getId}})
+// }
+// export const editUser=(getId)=>{
+//     console.log(getId)
+//     return ({type:'USER_LIST',payload:{editId:getId}})
+// }
+
+
 
 // export default ACTIONS

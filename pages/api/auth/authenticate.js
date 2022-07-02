@@ -1,8 +1,12 @@
 import bcrypt from 'bcrypt'
+import Cors from 'cors'
 import { useRouter } from 'next/router'
 import User from '../../../models/userModels'
 import connectDB from '../../../utils/connectDB'
 connectDB()
+const cors = Cors({
+  methods:['GET','HEAD','POST','PUT']
+})
 
 const Authenticate = async (req, res) => {
   const { method } = req
@@ -25,9 +29,12 @@ const Authenticate = async (req, res) => {
       break
     case 'POST':
       try {
+       
         const { name, email, password, c_password } = req.body
+      
         const allUser = await User.find({})
         const foundUser = allUser.find((e) => e.email === email)
+       console.log(foundUser)
         if (foundUser) {
           res.status(400).json({ success: false, msg: 'User already exist' })
         } else {

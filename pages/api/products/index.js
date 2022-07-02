@@ -42,6 +42,7 @@ const ProductHandle = async (req, res) => {
       break 
     case 'PUT':
       try {
+       
         const updated = await Products.findOneAndUpdate({_id:req.body.id},req.body.info,{new:true}).exec();
         if(updated){
           res.status(200).json({message:'Update successful'})

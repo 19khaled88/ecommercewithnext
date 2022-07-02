@@ -1,42 +1,24 @@
 import { useRouter } from 'next/router';
-const UsersPage = ()=>{
+import { useState } from 'react';
+import UserList from '../../components/users/userList';
+import { deleteData, getData } from '../../utils/fetchData';
 
-  
+const UsersPage = (props)=>{
+  const [deleted, setDeleted] = useState('')
+  const deleteUser=async(getId)=>{
+   const result = await deleteData('userList',getId)
+   setDeleted(result)
+  }
+
+ 
+  const {users} = props
   return <div className='container'>
-          <p className='text-2xl pt-2'>This is the Teams landing page</p>
-          <table className="ui single line table">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Registration Date</th>
-                <th>E-mail address</th>
-                <th>Premium Plan</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>John Lilki</td>
-                <td>September 14, 2013</td>
-                <td>jhlilk22@yahoo.com</td>
-                <td>No</td>
-              </tr>
-              <tr>
-                <td>Jamie Harington</td>
-                <td>January 11, 2014</td>
-                <td>jamieharingonton@yahoo.com</td>
-                <td>Yes</td>
-              </tr>
-              <tr>
-                <td>Jill Lewis</td>
-                <td>May 11, 2014</td>
-                <td>jilsewris22@yahoo.com</td>
-                <td>Yes</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>;
+          <p className='text-2xl pt-2 pb-2'>All Users</p>
+          <UserList   deleted={deleted}  deleteUser={deleteUser} allUsers={users}/>
+         </div>;
 }
 export const NestedLayout = ({children}) => {
+ 
   const router = useRouter()
   // const items=()=>{
   //   return (
@@ -74,7 +56,7 @@ export const NestedLayout = ({children}) => {
                   Users
                 </button>
                 <button onClick={()=>navHandler('dashboard') } className='text-2xl bg-rose-400 h-10 lg:h-9 flex pl-3 justify-start items-center rounded-md cursor w-full'>
-               Dashboard
+                  Dashboard
               </button>
               </ol>
             </ul>
@@ -88,5 +70,15 @@ export const NestedLayout = ({children}) => {
 export const UsersPageLayout = (page)=><NestedLayout>{page}</NestedLayout>
 UsersPage.getLayout = UsersPageLayout;
 
+
+export async function getServerSideProps() {
+  const res = await getData('userList')
+  return {
+    props: {
+      users: res.users,
+      result: res.result,
+    },
+  }
+}
 
 export default UsersPage

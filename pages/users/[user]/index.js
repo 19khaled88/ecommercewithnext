@@ -100,6 +100,9 @@ const NestedLayout=({children})=>{
                 <button style={{backgroundColor:'#cacbcd'}} className="border px-3 py-1 rounded-md text-2xl bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
                   <Link href={`/users/${user}/list`}>Product List</Link>
                 </button>
+                <button style={{backgroundColor:'#cacbcd'}} className="border px-3 py-1 rounded-md text-2xl bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
+                  <Link href={`/users/${user}/list`}>Order List</Link>
+                </button>
               </ul>
             </nav>
           </header>
