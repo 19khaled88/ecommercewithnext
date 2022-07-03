@@ -15,7 +15,8 @@ const nextConfig = {
     'PAYPAL_CLIENT_ID_GENERATED':"AbGFym1Xhl7I7QkVU1E2nHZmboIBh2RQXQYoqMN0qSrnp6TTHvtzwnhdeeoPdiW76XwKDLmYjsCBRpEV"
   },
   imgaes:{
-    domains: ['res.cloudinary.com'],
+    domains: ["res.cloudinary.com"],
+    
     domains:['https://images.unsplash.com'],
     domains: ['https://assets.vercel.com'],
   },

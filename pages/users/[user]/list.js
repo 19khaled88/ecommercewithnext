@@ -1,11 +1,16 @@
+// import Image from "next/dist/client/image";
+import Image from 'next/image';
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Image, { Button, Checkbox, Table } from 'semantic-ui-react';
+import { Button, Checkbox, Table } from 'semantic-ui-react';
+import noimage from '../../../public/noimage.png';
 import packages from '../../../public/productLogo.png';
 import { getData, putData } from "../../../utils/fetchData";
 import { UserPageLayout } from "./";
 const ListPage = ({products}) => {
-  products.map(ite=>console.log(ite.images[0]))
+  for(var im of products){
+    console.log(im.images[0])
+  }
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -93,7 +98,16 @@ const ListPage = ({products}) => {
                     </Table.Cell>
                     <Table.Cell>{item.category}</Table.Cell>
                     <Table.Cell>
-                    <Image className='w-6 h-6' src={item.images[0]} alt="" />
+                    <div>
+                      {
+                        // item.images 
+                        // ?<Image src={item.images} width="30" height="30"   /> 
+                        // :<Image src={noimage} width="30" height="30"  />
+                        item.images && ( <Image src={item.images[0]} width="30" height="50" /> ) 
+                      }
+                    </div>
+                    
+                    
                     </Table.Cell>
                     <Table.Cell>{item.title}</Table.Cell>
                     <Table.Cell>{item.description}</Table.Cell>
@@ -120,7 +134,7 @@ const ListPage = ({products}) => {
               onClick={()=>setShowAddModal(true)}
               >
               <div className="flex flex-row items-center justify-center">
-              <Image  width={20} height={20} src={packages} alt="" /> Add Product
+              <Image  width={30} height={30} src={packages} alt={noimage} /> Add Product
               </div>
               </Button>
               <Button size='small'>Approve</Button>
