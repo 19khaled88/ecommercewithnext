@@ -60,15 +60,3 @@ const ProductHandle = async (req, res) => {
 }
 export default ProductHandle
 
-// const getProducts = async (req, res) => {
-//   try {
-//     const products = await Products.find()
-//     res.json({
-//       status: 'success',
-//       result: products.length,
-//       products,
-//     })
-//   } catch (error) {
-//     return res.status(500).json({ err: error.message })
-//   }
-// }

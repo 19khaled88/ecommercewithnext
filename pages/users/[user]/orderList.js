@@ -1,11 +1,11 @@
+import Image from "next/image";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import Image, { Button, Checkbox, Table } from 'semantic-ui-react';
+import { Button, Table } from 'semantic-ui-react';
+import { UserPageLayout } from ".";
 import packages from '../../../public/productLogo.png';
 import { getData, putData } from "../../../utils/fetchData";
-import { UserPageLayout } from "./";
-const ListPage = ({products}) => {
-  products.map(ite=>console.log(ite.images[0]))
+const OrderListPage = ({orders}) => {
   const [showAddModal, setShowAddModal] = useState(false);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [showEditModal, setShowEditModal] = useState(false);
@@ -19,6 +19,7 @@ const ListPage = ({products}) => {
   const[inStock, setStock] = useState('')
   
  
+  console.log(orders)
   const Delete=(data)=>{
     setShowDeleteModal(true)
     setId(data)
@@ -29,7 +30,6 @@ const ListPage = ({products}) => {
     setShowEditModal(true)
    
   }  
-
   const editFormSubmit=async(pId)=>{
    const id = [['id', pId]]
    const value ={category,title,description,price,inStock}
@@ -65,72 +65,69 @@ const ListPage = ({products}) => {
       </h3>
       </section>
       <section className="">
-      <Table celled compact definition>
-      <Table.Header fullWidth>
-          <Table.Row>
-          <Table.HeaderCell />
-          <Table.HeaderCell>Category</Table.HeaderCell>
-          <Table.HeaderCell>Image</Table.HeaderCell>
-          <Table.HeaderCell>Name</Table.HeaderCell>
-          <Table.HeaderCell>Description</Table.HeaderCell>
-          <Table.HeaderCell>Content</Table.HeaderCell>
-          <Table.HeaderCell>Price</Table.HeaderCell>
-          <Table.HeaderCell>Stock</Table.HeaderCell>
-          <Table.HeaderCell><div className="mx-8"><i className="trash alternate icon"></i></div></Table.HeaderCell>
-          <Table.HeaderCell><div className="mx-8"><i className="edit icon"></i></div></Table.HeaderCell>
-         
-          </Table.Row>
-      </Table.Header>
+        <Table celled compact definition>
+            <Table.Header fullWidth>
+                <Table.Row>
+                <Table.HeaderCell />
+                <Table.HeaderCell>Category</Table.HeaderCell>
+                <Table.HeaderCell>Image</Table.HeaderCell>
+                <Table.HeaderCell>Name</Table.HeaderCell>
+                <Table.HeaderCell>Description</Table.HeaderCell>
+                <Table.HeaderCell>Content</Table.HeaderCell>
+                <Table.HeaderCell>Price</Table.HeaderCell>
+                <Table.HeaderCell>Stock</Table.HeaderCell>
+                <Table.HeaderCell><div className="mx-8"><i className="trash alternate icon"></i></div></Table.HeaderCell>
+                <Table.HeaderCell><div className="mx-8"><i className="edit icon"></i></div></Table.HeaderCell>
+                
+                </Table.Row>
+            </Table.Header>
 
-      <Table.Body>
-      {
-          products.map(item=>
-           
-              (
-                  <Table.Row key={item._id}>
-                    <Table.Cell collapsing>
-                        <Checkbox slider />
-                    </Table.Cell>
-                    <Table.Cell>{item.category}</Table.Cell>
-                    <Table.Cell>
-                    <Image className='w-6 h-6' src={item.images[0]} alt="" />
-                    </Table.Cell>
-                    <Table.Cell>{item.title}</Table.Cell>
-                    <Table.Cell>{item.description}</Table.Cell>
-                    <Table.Cell>{item.content}</Table.Cell>
-                    <Table.Cell>{item.price}</Table.Cell>
-                    <Table.Cell>{item.inStock}</Table.Cell>
-                    <Table.Cell><button className="ui red button" onClick={()=>Delete(item._id)}>Delete</button></Table.Cell>
-                    <Table.Cell><button className="ui teal button" onClick={()=>Edit(item._id)}>Edit</button></Table.Cell>
-                  </Table.Row>)
-          )
-      }
-          
-      </Table.Body>
+            <Table.Body>
+            {
+                // orders.map(item=>
+                //     (
+                //         <Table.Row key={item._id}>
+                //             <Table.Cell collapsing>
+                //                 <Checkbox slider />
+                //             </Table.Cell>
+                //             <Table.Cell>{item.category}</Table.Cell>
+                //             <Table.Cell><div  className="mx-1 my-1"> <Image src={item.images} className="w-10 h-7" alt=""/></div> </Table.Cell>
+                //             <Table.Cell>{item.title}</Table.Cell>
+                //             <Table.Cell>{item.description}</Table.Cell>
+                //             <Table.Cell>{item.content}</Table.Cell>
+                //             <Table.Cell>{item.price}</Table.Cell>
+                //             <Table.Cell>{item.inStock}</Table.Cell>
+                //             <Table.Cell><button className="ui red button" onClick={()=>Delete(item._id)}>Delete</button></Table.Cell>
+                //             <Table.Cell><button className="ui teal button" onClick={()=>Edit(item._id)}>Edit</button></Table.Cell>
+                //         </Table.Row>)
+                // )
+            }
+                
+            </Table.Body>
 
-      <Table.Footer fullWidth>
-          <Table.Row>
-          <Table.HeaderCell />
-          <Table.HeaderCell colSpan='9'>
-              <Button
-              floated='right'
-              icon
-              primary
-              size='small'
-              onClick={()=>setShowAddModal(true)}
-              >
-              <div className="flex flex-row items-center justify-center">
-              <Image  width={20} height={20} src={packages} alt="" /> Add Product
-              </div>
-              </Button>
-              <Button size='small'>Approve</Button>
-              <Button disabled size='small'>
-              Approve All
-              </Button>
-          </Table.HeaderCell>
-          </Table.Row>
-      </Table.Footer>
-      </Table>
+            <Table.Footer fullWidth>
+                <Table.Row>
+                <Table.HeaderCell />
+                <Table.HeaderCell colSpan='9'>
+                    <Button
+                    floated='right'
+                    icon
+                    primary
+                    size='small'
+                    onClick={()=>setShowAddModal(true)}
+                    >
+                    <div className="flex flex-row items-center justify-center">
+                    <Image  width={20} height={20} src={packages} alt="" /> Add Product
+                    </div>
+                    </Button>
+                    <Button size='small'>Approve</Button>
+                    <Button disabled size='small'>
+                    Approve All
+                    </Button>
+                </Table.HeaderCell>
+                </Table.Row>
+            </Table.Footer>
+        </Table>
       </section>
        
        {/*Product add portion*/}
@@ -327,14 +324,14 @@ const ListPage = ({products}) => {
 }
 
 export async function getServerSideProps() {
-  const res = await getData('products')
+  const res = await getData('products/orders')
   return {
     props: {
-      products: res.products,
+        orders: res.orders,
       result: res.result,
     },
   }
 }
-ListPage.getLayout = UserPageLayout
+OrderListPage.getLayout = UserPageLayout
 
-export default ListPage;
+export default OrderListPage;
