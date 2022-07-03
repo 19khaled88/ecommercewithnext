@@ -68,7 +68,7 @@ const Cart = () => {
                         <h3 className='pt-4 text-right'>Total: <span className='text-danger'>{total}</span></h3>
                         {
                             address 
-                            ? <Checkcout state={state} dispatch={dispatch} total={total} address={addressRef.current.value} mobile={mobileRef.current.value} /> 
+                            ? <Checkcout cart={cart} auth={auth} state={state} dispatch={dispatch} total={total} address={addressRef.current.value} mobile={mobileRef.current.value} /> 
                             : <button className='text-green-600 font-bold btn btn-dark my-2'>Procceed with payment</button>
                             
                         }

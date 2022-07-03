@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { postData } from "../../utils/fetchData";
 
-const Checkcout = ({total, address,mobile,state,dispatch}) => {
+const Checkcout = ({total,cart,auth, address,mobile,state,dispatch}) => {
    
-    const cart =state.cart
-    const auth =state.auth
- 
+    // const cart = state.cart
+    // const auth =state.auth
+    
  
     useEffect(()=>{
        paypal.Buttons({
@@ -49,15 +49,6 @@ const Checkcout = ({total, address,mobile,state,dispatch}) => {
                                 dispatch({type:'NOTIFY',payload:{loading:false}})
                             // return dispatch({type:'NOTIFY',payload:{success:res.msg}})
                        
-                     
-                    //  .then(res=>{
-                    //         console.log(res)
-                    //         if(res.err) return dispatch({type: 'NOTIFY', payload:{error: res.err}})
-                    //         const ls = localStorage.removeItem('cart_storage_next_js')
-                    //         dispatch({type: 'ADD_CART', payload:[]}) 
-                    //         return dispatch({type:'NOTIFY',payload:{success:res.msg}})
-                    //     })
-                           
                         return dispatch({type:'NOTIFY',payload:{success:'Transaction successful'}})
                                     
                 };
