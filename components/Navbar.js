@@ -1,14 +1,26 @@
 import Cookie from 'js-cookie'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useContext } from 'react'
-import { Image } from 'semantic-ui-react'
+import { useContext, useEffect, useState } from 'react'
+import localAvatar from '../public/avatar-profile-icon.jpg'
+// import { Image } from 'semantic-ui-react'
+import logo from '../public/shopping-cart-logo.png'
 import { DataContext } from '../store/GlobalState'
+import Image from 'next/image'
 const Navbar = () => {
+  const [avatar, setAvatar] = useState('')
+  const [avatarName, setAvatarName] = useState('')
   const router = useRouter()
   const [state, dispatch] = useContext(DataContext)
-  const { auth,cart } = state
-  
+  const { auth, cart } = state
+
+  useEffect(() => {
+    const users = auth.user
+    if (users) {
+      setAvatar(users.avatar)
+      setAvatarName(users.name)
+    }
+  }, [auth])
 
   if (typeof window !== 'undefined') {
     // Perform localStorage action
@@ -49,12 +61,12 @@ const Navbar = () => {
       router.push('/')
     }
   }
-  
+
   return (
     <div className="sticky top-0 z-40">
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
-        <div className='flex flex-row justify-center items-center'>
-          <Image className='w-16 h-16 mr-3' src='shopping-cart-logo - Copy.png' alt='' />
+        <div className="flex flex-row justify-center items-center">
+          <Image width={50} height={50} className="w-5 h-5" src={logo} alt="" />
           <Link href="/">
             <a className="navbar-brand">E-commerce Site</a>
           </Link>
@@ -88,7 +100,7 @@ const Navbar = () => {
                     style={{ width: 80 }}
                   >
                     <svg
-                      className='mr-1'
+                      className="mr-1"
                       style={{ width: 15, height: 15 }}
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 576 512"
@@ -109,7 +121,7 @@ const Navbar = () => {
                     style={{ width: 80 }}
                   >
                     <svg
-                      className='mr-1'
+                      className="mr-1"
                       style={{ width: 15, height: 15 }}
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 576 512"
@@ -120,7 +132,7 @@ const Navbar = () => {
                   </a>
                 </Link>
                 <span className="absolute right-6 top-1 inline-flex items-center w-4 h-4 justify-center px-2 py-2 text-xs font-bold leading-none text-red-100 bg-red-600 rounded-full">
-                {cart.length}
+                  {cart.length}
                 </span>
               </li>
 
@@ -135,8 +147,8 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <svg 
-                    className='mr-1'
+                  <svg
+                    className="mr-1"
                     style={{ width: 15, height: 15 }}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 640 512"
@@ -149,22 +161,23 @@ const Navbar = () => {
                   {Object.keys(auth).length > 0 && (
                     <Link href="/users">
                       <a
-                        
                         className={'dropdown-item' + isActive('/user')}
                         style={{ width: 160 }}
                       >
-                        <Image
-                        className='w-5 h-5'
-                        style={{
-                          borderRadius: '50%',
-                          transform: 'translateY(-3px)',
-                          marginRight: '3px',
-                          display:'inline'
-                        }}
-                        src={auth.user.avatar}
-                        // width={500}
-                        // height={500}
-                        alt={auth.user.name}
+                        <img
+                          className="w-5 h-5"
+                          style={{
+                            borderRadius: '50%',
+                            transform: 'translateY(-3px)',
+                            marginRight: '3px',
+                            display: 'inline',
+                          }}
+                          width={50}
+                          height={50}
+                          src={avatar}
+                          // width={500}
+                          // height={500}
+                          alt={avatar}
                         />
                         User/Admin
                       </a>
@@ -175,12 +188,15 @@ const Navbar = () => {
                     <>
                       <Link href="/users/signin">
                         <a
-                          className={'dropdown-item items-center flex' + isActive('/signin')}
+                          className={
+                            'dropdown-item items-center flex' +
+                            isActive('/signin')
+                          }
                           style={{ width: 160 }}
                         >
                           <svg
-                            className='di mr-2'
-                            style={{ width: 12, height: 12,display:'inline' }}
+                            className="di mr-2"
+                            style={{ width: 12, height: 12, display: 'inline' }}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
                           >
@@ -191,12 +207,15 @@ const Navbar = () => {
                       </Link>
                       <Link href="/users/signup">
                         <a
-                          className={'dropdown-item items-center flex' + isActive('/signup')}
+                          className={
+                            'dropdown-item items-center flex' +
+                            isActive('/signup')
+                          }
                           style={{ width: 160 }}
                         >
                           <svg
-                          className='mr-2'
-                            style={{ width: 12, height: 12,display:'inline' }}
+                            className="mr-2"
+                            style={{ width: 12, height: 12, display: 'inline' }}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 640 512"
                           >
@@ -216,12 +235,20 @@ const Navbar = () => {
                         onClick={() => handleLogout()}
                       >
                         <a
-                          className={'dropdown-item flex flex-row items-center' + isActive('/logout')}
+                          className={
+                            'dropdown-item flex flex-row items-center' +
+                            isActive('/logout')
+                          }
                           style={{ width: 160 }}
                         >
                           <svg
-                            
-                            style={{ width: 12, height: 12,display:'inline',float:'left',marginRight:8}}
+                            style={{
+                              width: 12,
+                              height: 12,
+                              display: 'inline',
+                              float: 'left',
+                              marginRight: 8,
+                            }}
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 512 512"
                           >
