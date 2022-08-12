@@ -2,7 +2,7 @@ import Cookie from 'js-cookie'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useState } from 'react'
-import localAvatar from '../public/avatar-profile-icon.jpg'
+
 // import { Image } from 'semantic-ui-react'
 import logo from '../public/shopping-cart-logo.png'
 import { DataContext } from '../store/GlobalState'
@@ -13,7 +13,7 @@ const Navbar = () => {
   const router = useRouter()
   const [state, dispatch] = useContext(DataContext)
   const { auth, cart } = state
-
+  const [navbar, setNavbar] = useState(false)
   useEffect(() => {
     const users = auth.user
     if (users) {
@@ -63,7 +63,7 @@ const Navbar = () => {
   }
 
   return (
-    <div className="sticky top-0 z-40">
+    <div className={`sticky top-0 z-40 ${navbar ? 'active' : ''}`}>
       <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex">
         <div className="flex flex-row justify-center items-center">
           <Image width={50} height={50} className="w-5 h-5" src={logo} alt="" />

@@ -9,8 +9,8 @@ const nextConfig = {
     domains: ['https://assets.vercel.com'],
   },
   env: {
-    // 'BASE_URL':'https://ecommercewithnext.vercel.app',
-    BASE_URL: 'http://localhost:3000',
+    BASE_URL: 'https://ecommercewithnext.vercel.app',
+    // BASE_URL: 'http://localhost:3000',
     // khaled:VNHAybzMnVDF6NMq
     MONGODB_URL:
       'mongodb+srv://khaled:VNHAybzMnVDF6NMq@cluster0.ka5da.mongodb.net/ecommercenext',
@@ -76,6 +76,8 @@ const nextConfig = {
     },
   },
 }
-
+// const withImages = require('next-images')
+// const withTM = require('next-transpile-modules')(['@madzadev/image-slider'])
 module.exports = nextConfig
+// module.exports = withImages(withTM())
 // module.exports = withPlugins([[withImages]], nextConfig)

@@ -10,7 +10,7 @@ import { UserPageLayout } from './'
 import next from 'next'
 const ListPage = ({ products }) => {
   for (var im of products) {
-    console.log(im)
+    // console.log(im)
   }
   const [showAddModal, setShowAddModal] = useState(false)
   const [showDeleteModal, setShowDeleteModal] = useState(false)

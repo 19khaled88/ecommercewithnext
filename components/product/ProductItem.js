@@ -16,46 +16,63 @@ const ProductItem = ({ product }) => {
         {product.category}
       </p>
       <Image
+        style={{ width: '190px', height: '150px', margin: 'auto' }}
         className="card-img-top h-56 py-2 px-2"
         src={product.images}
         alt="Card image cap"
       />
-      <div className="card-body relative flex flex-col">
-        <h5 className="card-title text-base">{product.title}</h5>
-        <p className="card-text text-sm text-left text-gray-500">
-          <span className="text-fuchsia-600">Description</span>:{' '}
-          {product.description}
-        </p>
-        <p className="card-text text-sm text-left text-gray-500">
-          <span className="text-fuchsia-600">Content</span>: {product.content}
-        </p>
-        <div className="text-base flex flex-row justify-between">
-          <span className="text-fuchsia-600">
-            <span className="pr-2">Price:</span>
-            {product.price}
-          </span>
-          <span className="text-fuchsia-600">
-            <span className="pr-2"> Stock:</span>
-            {product.inStock}
+      <div
+        className="card-body relative flex flex-col"
+        style={{ marginTop: '0', paddingTop: '0', width: '100%' }}
+      >
+        <div>
+          <h5 className="card-title text-base">{product.title}</h5>
+          <p className="card-text text-sm text-left text-gray-500">
+            <span className="text-fuchsia-600">Description</span>:{' '}
+            {product.description}
+          </p>
+          <p className="card-text text-sm text-left text-gray-500">
+            <span className="text-fuchsia-600">Content</span>: {product.content}
+          </p>
+          <div className="text-base flex flex-row justify-between">
+            <span className="text-fuchsia-600">
+              <span className="pr-2">Price:</span>
+              {product.price}
+            </span>
+            <span className="text-fuchsia-600">
+              <span className="pr-2"> Stock:</span>
+              {product.inStock}
+            </span>
+          </div>
+          <span className="text-base float-left">
+            {product.sold === 1 ? 'Stock available' : 'Stock empty'}
           </span>
         </div>
-        <span className="text-base float-left">
-          {product.sold === 1 ? 'Stock available' : 'Stock empty'}
-        </span>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignContent: 'center',
+            justifyContent: 'space-between',
+            width: '90%',
+            margin: 'auto',
+          }}
+          className="absolute bottom-0"
+        >
+          <div className="" style={{ float: 'left' }}>
+            <a
+              href={`/product/${product._id}`}
+              className="btn btn-primary float-left "
+            >
+              Details
+            </a>
+          </div>
 
-        <div className="flex justify-between absolute bottom-0 left-0 pl-2 pb-1">
-          <a
-            href={`/product/${product._id}`}
-            className="btn btn-primary float-left "
-          >
-            Details
-          </a>
-        </div>
-
-        <div className="flex justify-between absolute bottom-0 right-0 pr-2 pb-1">
-          <a href="#" className="btn btn-primary float-right ">
-            Add to Cart
-          </a>
+          <div className="" style={{ float: 'right' }}>
+            <a href="#" className="btn btn-primary float-right ">
+              Add to Cart
+            </a>
+          </div>
         </div>
       </div>
     </div>
