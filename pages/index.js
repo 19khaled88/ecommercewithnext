@@ -19,7 +19,7 @@ const Home = (props) => {
       window.removeEventListener('scroll', changeNavbarColor)
     }
   }, [])
-  console.log(navBg)
+
   return (
     <div onScroll={changeNavbarColor} className={styles.container}>
       <Head>
